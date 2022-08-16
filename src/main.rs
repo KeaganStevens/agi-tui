@@ -25,15 +25,9 @@ struct Args {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    // setup terminal
-    enable_raw_mode()?;
-    let mut stdout = io::stdout();
-    execute!(stdout, EnterAlternateScreen, EnableMouseCapture)?;
-    let backend = CrosstermBackend::new(stdout);
+    // get database path
     let args = Args::parse();
     let database = args.database;
-    let mut terminal = Terminal::new(backend)?;
-
     // create app and run it
     let app = match app::App::new(database) {
         Ok(good_app) => good_app,
@@ -42,6 +36,13 @@ fn main() -> Result<(), Box<dyn Error>> {
             exit(1);
         }
     };
+    // setup terminal
+    enable_raw_mode()?;
+    let mut stdout = io::stdout();
+    execute!(stdout, EnterAlternateScreen, EnableMouseCapture)?;
+    let backend = CrosstermBackend::new(stdout);
+    let mut terminal = Terminal::new(backend)?;
+
     let res = run_app(&mut terminal, app);
 
     // restore terminal
