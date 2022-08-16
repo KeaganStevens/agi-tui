@@ -305,14 +305,14 @@ fn get_main_panel_values(app: &App) -> (String, String) {
 fn get_block_content_chunks(chunk: Rect) -> Vec<Rect> {
     Layout::default()
         .direction(Direction::Vertical)
-        .margin(2)
+        .margin(1)
         .constraints(
             [
-                Constraint::Percentage(2),
-                Constraint::Percentage(32),
-                Constraint::Percentage(32),
-                Constraint::Percentage(32),
-                Constraint::Percentage(2),
+                Constraint::Max(0),
+                Constraint::Min(4),
+                Constraint::Min(4),
+                Constraint::Min(4),
+                Constraint::Max(0),
             ]
             .as_ref(),
         )
