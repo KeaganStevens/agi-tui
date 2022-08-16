@@ -15,7 +15,7 @@ mod fan_data;
 mod sqlite;
 mod ui;
 
-/// Simple program to greet a person
+/// AGI Dashboard Terminal UI
 #[derive(Parser, Debug)]
 #[clap(author, version, about = None, long_about = None)]
 struct Args {
