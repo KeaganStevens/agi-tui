@@ -309,9 +309,9 @@ fn get_block_content_chunks(chunk: Rect) -> Vec<Rect> {
         .constraints(
             [
                 Constraint::Max(0),
-                Constraint::Min(4),
-                Constraint::Min(4),
-                Constraint::Min(4),
+                Constraint::Max(3),
+                Constraint::Max(3),
+                Constraint::Max(3),
                 Constraint::Max(0),
             ]
             .as_ref(),
